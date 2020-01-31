@@ -134,14 +134,16 @@ namespace PetGrooming.Controllers
             //logic for updating the pet in the database goes here
             return RedirectToAction("List");
         }
-      
+       
+        public ActionResult Delete(int id)
+        {
+            string query = "delete from pets where petid=@id";
+            SqlParameter sqlparam = new SqlParameter("@id", id);
+            db.Database.ExecuteSqlCommand(query, sqlparam);
+            return RedirectToAction("List");
 
-        //TODO:
-        //Update
-        //[HttpPost] Update
-        //[HttpPost] Delete
-        //(optional) Delete
-        
+        }
+
 
         protected override void Dispose(bool disposing)
         {
