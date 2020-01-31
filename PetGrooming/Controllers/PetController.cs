@@ -130,14 +130,15 @@ namespace PetGrooming.Controllers
         {
 
             
-            string query = "update pets set PetName=@PetName, Weight=@PetWeight, color=@PetColor, Notes=@PetNotes, SpeciesID=@SpeciesID where petid=" + id;
-            SqlParameter[] sqlparams = new SqlParameter[5]; //0,1,2,3,4 pieces of information to add
+            string query = "update pets set PetName=@PetName, Weight=@PetWeight, color=@PetColor, Notes=@PetNotes, SpeciesID=@SpeciesID where petid=@id";
+            SqlParameter[] sqlparams = new SqlParameter[6]; //0,1,2,3,4 pieces of information to add
             //each piece of information is a key and value pair
             sqlparams[0] = new SqlParameter("@PetName", PetName);
             sqlparams[1] = new SqlParameter("@PetWeight", PetWeight);
             sqlparams[2] = new SqlParameter("@PetColor", PetColor);
             sqlparams[3] = new SqlParameter("@SpeciesID", SpeciesID);
             sqlparams[4] = new SqlParameter("@PetNotes", PetNotes);
+            sqlparams[5] = new SqlParameter("@id", id);
 
             //db.Database.ExecuteSqlCommand will run insert, update, delete statements
             //db.Pets.SqlCommand will run a select statement, for example.
